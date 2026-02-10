@@ -53,7 +53,7 @@ public class Minesweeper {
 
     textLabel.setFont(new Font("Arial", Font.BOLD, 25));
     textLabel.setHorizontalAlignment(JLabel.CENTER);
-    textLabel.setText("Minesweeper");
+    textLabel.setText("Minesweeper: " + Integer.toString(mineCount));
     textLabel.setOpaque(true);
 
     textPanel.setLayout(new BorderLayout());
@@ -61,7 +61,7 @@ public class Minesweeper {
 
     boardPanel.setLayout(new GridLayout(numRows, numCols)); // 8 x 8
 
-    boardPanel.setBackground(Color.green);
+    boardPanel.setBackground(Color.black);
 
     frame.add(textPanel, BorderLayout.NORTH);
     frame.add(boardPanel);
