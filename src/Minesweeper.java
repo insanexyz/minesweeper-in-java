@@ -36,6 +36,8 @@ public class Minesweeper {
 
   MineTile[][] board = new MineTile[numRows][numCols];
   ArrayList<MineTile> mineList;
+  int mineCount = 10;
+  Random random = new Random();
 
   int tilesClicked = 0;
   boolean gameOver = false;
@@ -125,12 +127,24 @@ public class Minesweeper {
   void setMines() {
     mineList = new ArrayList<MineTile>();
 
-    mineList.add(board[1][1]);
-    mineList.add(board[2][3]);
-    mineList.add(board[4][3]);
-    mineList.add(board[6][5]);
+    // Set static mines (for testing)
+    // mineList.add(board[1][1]);
+    // mineList.add(board[2][3]);
+    // mineList.add(board[4][3]);
+    // mineList.add(board[6][5]);
 
-    // mineList.get(0).setText("*");
+    int mineLeft = mineCount;
+
+    while (mineLeft > 0) {
+      int r = random.nextInt(numRows); // 0 to 7 (doesnt include 8)
+      int c = random.nextInt(numRows); // 0 to 7 (doesnt include 8)
+      MineTile tile = board[r][c];
+      if (!mineList.contains(tile)) {
+        mineList.add(tile);
+        mineLeft--;
+      }
+    }
+
   }
 
   void revealMines() {
@@ -226,5 +240,4 @@ public class Minesweeper {
 
     return 0;
   }
-
 }
